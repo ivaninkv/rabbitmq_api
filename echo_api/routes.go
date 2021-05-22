@@ -7,4 +7,7 @@ import (
 func Register(g *echo.Group) {
 	h := g.Group("/hello")
 	h.GET("", hello)
+
+	ConnectionLst := g.Group("/connections")
+	ConnectionLst.GET("", GetConnectionList)
 }
