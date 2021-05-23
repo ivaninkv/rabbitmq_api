@@ -5,9 +5,13 @@ import (
 )
 
 func Register(g *echo.Group) {
-	h := g.Group("/hello")
-	h.GET("", hello)
 
-	ConnectionLst := g.Group("/connections")
-	ConnectionLst.GET("", GetConnectionList)
+	connList := g.Group("/connections")
+	connList.GET("", GetConnectionList)
+
+	createConn := g.Group("/create_connection")
+	createConn.POST("", CreateConnection)
+
+	deleteConn := g.Group("/delete_connection")
+	deleteConn.DELETE("/:id", DeleteConnection)
 }

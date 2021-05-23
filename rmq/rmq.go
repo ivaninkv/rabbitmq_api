@@ -1,24 +1,20 @@
 package rmq
 
 type Connections struct {
-	Name    string `json:"name" xml:"name"`
-	Host    string `json:"host" xml:"host"`
-	Durable bool   `json:"durable" xml:"durable"`
+	Id      int    `json:"id" xml:"id" form:"id" query:"id"`
+	Name    string `json:"name" xml:"name" form:"name" query:"name"`
+	Host    string `json:"host" xml:"host" form:"host" query:"host"`
+	Durable bool   `json:"durable" xml:"durable" form:"durable" query:"durable"`
 }
 
-var Conn []Connections
-
-func init() {
-	var c1 = Connections{
-		Name:    "Queue name",
-		Host:    "Hostname",
-		Durable: true,
-	}
-	var c2 = Connections{
-		Name:    "Queue name2",
-		Host:    "Hostname2",
-		Durable: false,
-	}
-
-	Conn = append(Conn, c1, c2)
+type QueueParam struct {
+	Name    string `json:"name" xml:"name" form:"name" query:"name"`
+	Host    string `json:"host" xml:"host" form:"host" query:"host"`
+	Port    int    `json:"port" xml:"port" form:"port" query:"port"`
+	User    string `json:"user" xml:"user" form:"user" query:"user"`
+	Pass    string `json:"pass" xml:"pass" form:"pass" query:"pass"`
+	Durable bool   `json:"durable" xml:"duarble" form:"duarble" query:"duarble"`
+	UseSsl  bool   `json:"usessl" xml:"usessl" form:"usessl" query:"usessl"`
 }
+
+var Conn = make([]Connections, 0)
