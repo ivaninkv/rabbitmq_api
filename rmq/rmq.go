@@ -22,8 +22,8 @@ type QueueParam struct {
 }
 
 type Message struct {
-	Id   int    `json:"id" xml:"id" form:"id" query:"id"`
-	Body string `json:"body" xml:"body" form:"body" query:"body"`
+	QueueId int    `json:"queue_id" xml:"queue_id" form:"queue_id" query:"queue_id"`
+	Body    string `json:"body" xml:"body" form:"body" query:"body"`
 }
 
 var Conn = make([]Connections, 0)

@@ -53,7 +53,7 @@ func DeleteQueue(Id int) (err error) {
 }
 
 func SendMessage(msg *Message) (err error) {
-	idx := getIndexByQueueNum(msg.Id)
+	idx := getIndexByQueueNum(msg.QueueId)
 	if idx < 0 {
 		failOnError(fmt.Errorf("index less then 0"), "Failed to get a channel")
 	}
@@ -71,7 +71,8 @@ func SendMessage(msg *Message) (err error) {
 			Body:        []byte(msg.Body),
 		})
 	failOnError(err, "Failed to publish a message")
-	log.Printf(" [x] Sent %s", msg.Body)
+	// log.Printf(" [x] Sent %s", msg.Body)
+	ch.Close()
 
 	return err
 }
