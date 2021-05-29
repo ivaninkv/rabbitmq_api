@@ -17,4 +17,9 @@ type QueueParam struct {
 	UseSsl  bool   `json:"usessl" xml:"usessl" form:"usessl" query:"usessl"`
 }
 
+type Message struct {
+	Id   int    `json:"id" xml:"id" form:"id" query:"id"`
+	Body string `json:"body" xml:"body" form:"body" query:"body"`
+}
+
 var Conn = make([]Connections, 0)

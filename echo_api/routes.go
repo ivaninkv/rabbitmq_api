@@ -14,4 +14,7 @@ func Register(g *echo.Group) {
 
 	deleteConn := g.Group("/delete_connection")
 	deleteConn.DELETE("/:id", DeleteConnection)
+
+	sendMsg := g.Group("/send_message")
+	sendMsg.POST("", SendMessage)
 }

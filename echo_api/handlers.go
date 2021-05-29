@@ -36,3 +36,16 @@ func DeleteConnection(c echo.Context) error {
 
 	return c.String(http.StatusOK, fmt.Sprintf("Queue %d deleted.", id))
 }
+
+func SendMessage(c echo.Context) error {
+	msg := &rmq.Message{}
+	if err := c.Bind(msg); err != nil {
+		return c.String(http.StatusBadRequest, err.Error())
+	}
+
+	if err := rmq.SendMessage(msg); err != nil {
+		return c.String(http.StatusBadRequest, err.Error())
+	}
+
+	return c.String(http.StatusOK, "Message was be sended")
+}

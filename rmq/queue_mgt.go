@@ -24,6 +24,11 @@ func DeleteQueue(Id int) (err error) {
 	return err
 }
 
+func SendMessage(msg *Message) (err error) {
+
+	return err
+}
+
 func getMaxQueueNum() int {
 	maxId := 0
 	for _, v := range Conn {
