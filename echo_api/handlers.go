@@ -20,7 +20,7 @@ func CreateConnection(c echo.Context) error {
 	}
 
 	conn := rmq.CreateQueue(qp)
-	return c.JSON(http.StatusOK, conn)
+	return c.JSON(http.StatusOK, fmt.Sprintf("{created_id:%d}", conn.Id))
 }
 
 func DeleteConnection(c echo.Context) error {

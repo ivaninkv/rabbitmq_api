@@ -1,10 +1,14 @@
 package rmq
 
+import "github.com/streadway/amqp"
+
 type Connections struct {
-	Id      int    `json:"id" xml:"id" form:"id" query:"id"`
-	Name    string `json:"name" xml:"name" form:"name" query:"name"`
-	Host    string `json:"host" xml:"host" form:"host" query:"host"`
-	Durable bool   `json:"durable" xml:"durable" form:"durable" query:"durable"`
+	Id      int              `json:"id" xml:"id" form:"id" query:"id"`
+	Name    string           `json:"name" xml:"name" form:"name" query:"name"`
+	Host    string           `json:"host" xml:"host" form:"host" query:"host"`
+	Durable bool             `json:"durable" xml:"durable" form:"durable" query:"durable"`
+	Conn    *amqp.Connection `json:"-" xml:"-" form:"-" query:"-"`
+	Channel *amqp.Channel    `json:"-" xml:"-" form:"-" query:"-"`
 }
 
 type QueueParam struct {
