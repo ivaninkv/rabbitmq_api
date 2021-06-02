@@ -36,7 +36,10 @@ func main() {
 		}
 
 		defer resp.Body.Close()
-		body, err := io.ReadAll(resp.Body)
-		fmt.Println(string(body))
+		if body, err := io.ReadAll(resp.Body); err != nil {
+			fmt.Println(err.Error())
+		} else {
+			fmt.Println(string(body))
+		}
 	}
 }
