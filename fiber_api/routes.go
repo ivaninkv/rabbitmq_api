@@ -16,5 +16,5 @@ func Register(g fiber.Router) {
 	deleteConn.Delete("/:id", DeleteConnection)
 
 	sendMsg := g.Group("/send_message")
-	sendMsg.Post("", SendMessage)
+	go sendMsg.Post("", SendMessage)
 }

@@ -7,7 +7,8 @@ import (
 )
 
 func Run_server() {
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		Prefork: true})
 	v1 := app.Group("/api/v1")
 	Register(v1)
 
